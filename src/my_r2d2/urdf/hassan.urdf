@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<robot name="hassan">
+
+<material name="has1">
+    <color rgba="0.9 0.3 .2 1"/>
+  </material>
+  <material name="has2">
+    <color rgba="0.3 0.4 0.9 1"/>
+  </material>
+  <material name="has3">
+    <color rgba="0.2 0.9 0.3 1"/>
+  </material>
+
+  <link name="base_link">
+    <visual>
+      <geometry>
+        <box size="0.6 .4 .1"/>
+      </geometry>
+      <material name="has1"/>
+    </visual>
+  </link>
+
+  <link name="rod1">
+    <visual>
+      <geometry>
+        <cylinder length="0.3" radius="0.02"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0.01 0.15"/>
+      <material name="has2"/>
+    </visual>
+  </link>
+
+  <joint name="base_to_rod1" type="revolute">
+    <parent link="base_link"/>
+    <child link="rod1"/>
+<limit effort="1000.0" lower="-3.14" upper="0" velocity="0.5"/>
+    <origin xyz="0 0.21 0"/>
+  </joint>
+
+<link name="rod2">
+    <visual>
+      <geometry>
+        <cylinder length="0.1" radius="0.02"/>
+      </geometry>
+      <origin rpy="0 1.57075 0" xyz="0.1 0 0"/>
+      <material name="has3"/>
+    </visual>
+  </link>
+
+  <joint name="rod1_to_rod2" type="continuous">
+    <parent link="rod1"/>
+    <child link="rod2"/>
+    <origin xyz="0 0.04 0.3"/>
+  </joint>
+
+  <link name="ball">
+    <visual>
+      <geometry>
+        <sphere radius="0.02"/>
+      </geometry>
+<origin xyz="0 0.04 0"/>
+      <material name="has1"/>
+    </visual>
+  </link>
+  <joint name="ball_swivel" type="continuous">
+    <parent link="rod2"/>
+    <child link="ball"/>
+    <origin xyz="0.17 0.03 0"/>
+</joint>
+  
+</robot>
