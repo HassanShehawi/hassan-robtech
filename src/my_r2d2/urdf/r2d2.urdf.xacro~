@@ -51,7 +51,7 @@
   <joint name="footprint_to_base" type="fixed">
       <parent link="base_footprint"/>
       <child link="base_link"/>
-      <origin xyz="0 0 ${wheeldiam+.05+bodylen/2+0.1}" />
+      <origin xyz="0 0 ${wheeldiam+bodylen/2+0.1}" />
   </joint>
 
   <xacro:macro name="wheel" params="prefix suffix reflect">
@@ -245,5 +245,18 @@
     <child link="box"/>
     <origin xyz="${.707*width+0.04} 0 ${.707*width}"/>
   </joint>
+
+<link name="eye">
+    
+  </link>
+
+<joint name="eyebox" type="fixed">
+    <parent link="box"/>
+    <child link="eye"/>
+ <origin rpy="1.57075 0 -1.57075"/>
+    
+  </joint>
+
+
 
 </robot>
