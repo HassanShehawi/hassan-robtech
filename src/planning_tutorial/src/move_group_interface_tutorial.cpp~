@@ -55,7 +55,7 @@ waypoints.push_back(target_pose3);  //back to start
   ROS_INFO("Visualizing plan 4 (cartesian path) (%.2f%% acheived)",
         fraction * 100.0);    
   /* Sleep to give Rviz time to visualize the plan. */
-  sleep(5);
+  sleep(15.0);
 
   plan.trajectory_ = trajectory;
 
